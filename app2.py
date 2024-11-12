@@ -56,4 +56,4 @@ with st.form('proc', clear_on_submit=True, border=True):
         st.dataframe(df, use_container_width=True)
 
         st.subheader('Lista de Status')
-        st.dataframe(fr, use_container_width=True, height=800)
+        list = st.dataframe(fr, use_container_width=True, height=800)
