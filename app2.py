@@ -57,5 +57,4 @@ with st.form('proc', clear_on_submit=True, border=True):
 
 with st.form('me', clear_on_submit=True, border=True):
         st.subheader('Mostrar entregas')
-        if st.form_submit_button('Mostrar'):
-            st.dataframe(fr, use_container_width=True, height=800)
+        st.dataframe(fr, use_container_width=True, height=800)
