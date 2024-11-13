@@ -53,7 +53,7 @@ with st.form('proc', clear_on_submit=True, border=True):
         if crit == 'Documento':
             df = fr[fr['documento'] == dat]
         if crit == 'Observação':
-            df = fr[fr['Observações'] == dat]
+            df = fr[fr['observações'] == dat]
             
 
         st.dataframe(df, use_container_width=True)
