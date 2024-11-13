@@ -40,7 +40,7 @@ st.header('Consultar Entregas')
 with st.form('proc', clear_on_submit=True, border=True):
     st.subheader('Procurar entregas')
     crit = st.selectbox('Selecione um critério:',
-                        ['Data', 'Status', 'Documento'])
+                        ['Data', 'Status', 'Documento', 'Observação'])
     dat = st.text_input('Escreva o valor correspondente')
 
     # fr é a varaivel que contem a planilha do google sheets
@@ -52,6 +52,9 @@ with st.form('proc', clear_on_submit=True, border=True):
             df = fr[fr['status'] == dat]
         if crit == 'Documento':
             df = fr[fr['documento'] == dat]
+        if crit == 'Observação':
+            df = fr[fr['Observações'] == dat]
+            
 
         st.dataframe(df, use_container_width=True)
 
