@@ -64,10 +64,12 @@ datai = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YY
 dataf = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
 
 ai = str(datai)
-dataformati = f'{ai[-2:]}/{ai[5:7]}/{ai[:4]}'                            
+dataformati = f'{ai[-2:]}/{ai[5:7]}/{ai[:4]}'       
+aii = int(dataformati)
 af = str(dataf)
 dataformatf = f'{af[-2:]}/{af[5:7]}/{af[:4]}'
-dff = fr[(fr['data'] >= dataformati) & (fr['data'] <= dataformatf)]
+aff = int(dataformatf)
+dff = fr[(fr['data'] >= aii) & (fr['data'] <= aff)]
 if st.button('Pesquisar'):
     st.dataframe(dff, use_container_width=True)
 
