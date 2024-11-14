@@ -59,7 +59,7 @@ with st.form('proc', clear_on_submit=True, border=True):
 
         st.dataframe(df, use_container_width=True)
 
-st.subheader('Pesquisa por periodo')
+st.subheader('Pesquisa por Período')
 data_inicial = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
 data_final = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
 if data_inicial > data_final:
