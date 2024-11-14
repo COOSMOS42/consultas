@@ -67,10 +67,9 @@ ai = str(datai)
 dataformati = f'{ai[-2:]}/{ai[5:7]}/{ai[:4]}'                            
 af = str(dataf)
 dataformatf = f'{af[-2:]}/{af[5:7]}/{af[:4]}'
-
+dff = fr[(fr['data'] >= dataformati) & (fr['data'] <= dataformatf)]
 if st.button('Pesquisar'):
-    df = fr[(fr['data'] >= dataformati) & (fr['data'] <= dataformatf)]
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(dff, use_container_width=True)
 
 st.subheader('Lista de Status')
 st.dataframe(fr, use_container_width=True, height=800)
