@@ -73,7 +73,7 @@ else:
         lista_datas.append(dataformat)
         data_atual += timedelta(days=1)
 
-df = fr[fr['data'] == lista_datas]
+df = fr[fr['data'].isin(lista_datas)]
 if st.button('Pesquisar'):
     st.dataframe(dff, use_container_width=True)
 
