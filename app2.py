@@ -64,9 +64,9 @@ datai = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YY
 dataf = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
 
 ai = str(datai)
-dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'                            
+dataformati = f'{ai[-2:]}/{ai[5:7]}/{ai[:4]}'                            
 af = str(dataf)
-dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+dataformatf = f'{af[-2:]}/{af[5:7]}/{af[:4]}'
 
 if st.button('Pesquisar'):
     df = fr[(fr['data'] >= dataformati) & (fr['data'] >= dataformatf)]
