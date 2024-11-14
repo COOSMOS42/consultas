@@ -69,7 +69,7 @@ aii = int(dataformati)
 af = str(dataf)
 dataformatf = f'{af[-2:]}/{af[5:7]}/{af[:4]}'
 aff = int(dataformatf)
-dff = fr[(fr['data'] >= aii) & (fr['data'] <= aff)]
+dff = fr[(fr['data'] >= aii) and (fr['data'] <= aff)]
 if st.button('Pesquisar'):
     st.dataframe(dff, use_container_width=True)
 
