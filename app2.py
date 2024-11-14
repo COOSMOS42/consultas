@@ -42,23 +42,13 @@ with st.form('proc', clear_on_submit=True, border=True):
     crit = st.selectbox('Selecione um critério:',
                         ['Data', 'Status', 'Documento', 'Observação'])
 
-    if crit == 'Data':
-        datai = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
-        dataf = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
-
-    else: 
-        dat= st.text_input('Escreva o valor correspondente')
     
-    ai = str(datai)
-    dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'                            
-    af = str(dataf)
-    dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
-
+    dat= st.text_input('Escreva o valor correspondente')
     # fr é a varaivel que contem a planilha do google sheets
     if st.form_submit_button('Procurar'):
 
         if crit == 'Data':
-            df = fr[(fr['data'] >= dataformati) & (fr['data'] >= dataformatf)]
+            df = fr[fr['data'] == dat]
         if crit == 'Status':
             df = fr[fr['status'] == dat]
         if crit == 'Documento':
@@ -68,6 +58,18 @@ with st.form('proc', clear_on_submit=True, border=True):
             
 
         st.dataframe(df, use_container_width=True)
+
+st.subheader('Pesquisar por período')
+datai = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
+dataf = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
+
+ai = str(datai)
+dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'                            
+af = str(dataf)
+dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+
+if st.button('Pesquisar'):
+    df = fr[(fr['data'] >= dataformati) & (fr['data'] >= dataformatf)]
 
 st.subheader('Lista de Status')
 st.dataframe(fr, use_container_width=True, height=800)
