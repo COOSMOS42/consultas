@@ -43,11 +43,8 @@ with st.form('proc', clear_on_submit=True, border=True):
                         ['Data', 'Status', 'Documento', 'Observação'])
 
     if crit == 'Data':
-        datai = data = st.date_input('Data de envio',
-                             datetime.now().date(),
-                             format='DD/MM/YYYY')
-        dataf = data = st.date_input('Data de envio',
-                             datetime.now().date(), format='DD/MM/YYYY')
+        datai = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
+        dataf = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
 
     else: 
         dat= st.text_input('Escreva o valor correspondente')
