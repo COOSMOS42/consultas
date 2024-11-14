@@ -75,7 +75,7 @@ else:
 
 df = fr[fr['data'].isin(lista_datas)]
 if st.button('Pesquisar'):
-    st.dataframe(dff, use_container_width=True)
+    st.dataframe(df, use_container_width=True)
 
 st.subheader('Lista de Status')
 st.dataframe(fr, use_container_width=True, height=800)
