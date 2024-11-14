@@ -65,7 +65,6 @@ data_final = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/Y
 if data_inicial > data_final:
     st.error("A data inicial deve ser anterior ou igual à data final!")
 else:
-    # Gera a lista de datas
     lista_datas = []
     data_atual = data_inicial
     while data_atual <= data_final:
