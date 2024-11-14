@@ -59,23 +59,25 @@ with st.form('proc', clear_on_submit=True, border=True):
 
         st.dataframe(df, use_container_width=True)
 
-st.subheader('Pesquisa por Período')
-data_inicial = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
-data_final = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
-if data_inicial > data_final:
-    st.error("A data inicial deve ser anterior ou igual à data final!")
-else:
-    lista_datas = []
-    data_atual = data_inicial
-    while data_atual <= data_final:
-        a = str(data_atual)
-        dataformat = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
-        lista_datas.append(dataformat)
-        data_atual += timedelta(days=1)
 
-df = fr[fr['data'].isin(lista_datas)]
-if st.button('Pesquisar'):
-    st.dataframe(df, use_container_width=True)
+with st.form('datt', clear_on_submit=True, border=True):
+    st.subheader('Pesquisa por Período')
+    data_inicial = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
+    data_final = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
+    if data_inicial > data_final:
+        st.error("A data inicial deve ser anterior ou igual à data final!")
+    else:
+        lista_datas = []
+        data_atual = data_inicial
+        while data_atual <= data_final:
+            a = str(data_atual)
+            dataformat = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+            lista_datas.append(dataformat)
+            data_atual += timedelta(days=1)
+    
+    df = fr[fr['data'].isin(lista_datas)]
+    if st.form_submit_button('Pesquisar'):
+        st.dataframe(df, use_container_width=True)
 
 st.subheader('Lista de Status')
 st.dataframe(fr, use_container_width=True, height=800)
