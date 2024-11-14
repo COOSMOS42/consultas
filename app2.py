@@ -53,7 +53,6 @@ with st.form('proc', clear_on_submit=True, border=True):
                              format='DD/MM/YYYY')
         af = str(dataf)
         dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
-    gap = datai <= and <= dataf
     dat= st.text_input('Escreva o valor correspondente')
 
     # fr é a varaivel que contem a planilha do google sheets
