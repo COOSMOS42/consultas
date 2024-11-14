@@ -48,13 +48,14 @@ with st.form('proc', clear_on_submit=True, border=True):
                              format='DD/MM/YYYY')
         dataf = data = st.date_input('Data de envio',
                              datetime.now().date(), format='DD/MM/YYYY')
+
+    else: 
+        dat= st.text_input('Escreva o valor correspondente')
     
     ai = str(datai)
-        dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'                            
+    dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'                            
     af = str(dataf)
     dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
-
-    dat= st.text_input('Escreva o valor correspondente')
 
     # fr é a varaivel que contem a planilha do google sheets
     if st.form_submit_button('Procurar'):
