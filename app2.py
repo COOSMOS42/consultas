@@ -70,6 +70,7 @@ dataformatf = f'{af[-2:]}/{af[5:7]}/{af[:4]}'
 
 if st.button('Pesquisar'):
     df = fr[(fr['data'] >= dataformati) & (fr['data'] >= dataformatf)]
+    st.dataframe(df, use_container_width=True)
 
 st.subheader('Lista de Status')
 st.dataframe(fr, use_container_width=True, height=800)
