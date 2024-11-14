@@ -41,13 +41,26 @@ with st.form('proc', clear_on_submit=True, border=True):
     st.subheader('Procurar entregas')
     crit = st.selectbox('Selecione um critério:',
                         ['Data', 'Status', 'Documento', 'Observação'])
-    dat = st.text_input('Escreva o valor correspondente')
+
+    if crit == 'Data':
+        datai = data = st.date_input('Data de envio',
+                             datetime.now().date(),
+                             format='DD/MM/YYYY')
+        ai = str(datai)
+        dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+        dataf = data = st.date_input('Data de envio',
+                             datetime.now().date(),
+                             format='DD/MM/YYYY')
+        af = str(dataf)
+        dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+    gap = datai <= and <= dataf
+    dat= st.text_input('Escreva o valor correspondente')
 
     # fr é a varaivel que contem a planilha do google sheets
     if st.form_submit_button('Procurar'):
 
         if crit == 'Data':
-            df = fr[fr['data'] == dat]
+            df = fr[(fr['data'] >= dataformati) & (fr['data'] >= dataformatf)]
         if crit == 'Status':
             df = fr[fr['status'] == dat]
         if crit == 'Documento':
