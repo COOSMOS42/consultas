@@ -60,16 +60,21 @@ with st.form('proc', clear_on_submit=True, border=True):
         st.dataframe(df, use_container_width=True)
 
 st.subheader('Pesquisar por período')
-datai = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
-dataf = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
+data_inicial = st.date_input('Data de início', datetime.now().date(), format='DD/MM/YYYY')
+data_final = st.date_input('Data de fim', datetime.now().date(), format='DD/MM/YYYY')
+if data_inicial > data_final:
+    st.error("A data inicial deve ser anterior ou igual à data final!")
+else:
+    # Gera a lista de datas
+    lista_datas = []
+    data_atual = data_inicial
+    while data_atual <= data_final:
+        a = str(data_atual)
+        dataformat = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+        lista_datas.append(dataformat)
+        data_atual += timedelta(days=1)
 
-ai = str(datai)
-dataformati = f'{ai[-2:]}/{ai[5:7]}/{ai[:4]}'       
-aii = int(dataformati)
-af = str(dataf)
-dataformatf = f'{af[-2:]}/{af[5:7]}/{af[:4]}'
-aff = int(dataformatf)
-dff = fr[(fr['data'] >= aii) and (fr['data'] <= aff)]
+df = fr[fr['data'] == lista_datas]
 if st.button('Pesquisar'):
     st.dataframe(dff, use_container_width=True)
 
