@@ -46,13 +46,14 @@ with st.form('proc', clear_on_submit=True, border=True):
         datai = data = st.date_input('Data de envio',
                              datetime.now().date(),
                              format='DD/MM/YYYY')
-        ai = str(datai)
-        dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
         dataf = data = st.date_input('Data de envio',
-                             datetime.now().date(),
-                             format='DD/MM/YYYY')
-        af = str(dataf)
-        dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+                             datetime.now().date(), format='DD/MM/YYYY')
+    
+    ai = str(datai)
+        dataformati = f'{a[-2:]}/{a[5:7]}/{a[:4]}'                            
+    af = str(dataf)
+    dataformatf = f'{a[-2:]}/{a[5:7]}/{a[:4]}'
+
     dat= st.text_input('Escreva o valor correspondente')
 
     # fr é a varaivel que contem a planilha do google sheets
